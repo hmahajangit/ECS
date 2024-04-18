@@ -1,0 +1,31 @@
+management:
+  endpoint:
+    info:
+      enabled: true
+    restart:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+server:
+  port: 8083
+spring:
+  main:
+    allow-circular-references: true
+  data:
+    mongodb:
+      uri: mongodb://admin:nextwork@localhost:27017/nextworkdb?authSource=admin
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri:  https://myid-qa.siemens.com/ext/oauth/jwks
+remote-service-base:
+  url: http://localhost:8081
+project-service:
+  url: /api/v1/project
+user-service:
+  url: /api/v1/user
+s3bucket:
+  app-bucket-name: nextwork-staging-appdata1
+ 

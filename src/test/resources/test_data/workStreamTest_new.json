@@ -1,0 +1,2184 @@
+[{
+  "uid":  "6555ea91dd30a757fd28c92f",
+  "name": "PN 3",
+  "description": "esrerasa",
+  "startDate": "2023-11-15T18:30:00.000Z",
+  "endDate": "2027-11-29T18:30:00.000Z",
+  "scopingVersion": "20230101",
+  "stage": "TEST",
+  "publishedStatus": "UNPUBLISH",
+  "localAdminScopedWorkstream": false,
+  "isDeleted": false,
+  "createdOn": "2023-11-16T10:10:25.959Z",
+  "createdBy": "pranita.nannaware@siemens.com",
+  "selfRole": "PROJECT OWNER",
+  "memberCount": 7,
+  "users": [
+    {
+      "uid": "654e089da076a03586978e49",
+      "name": "Pranita Nannaware",
+      "email": "pranita.nannaware@siemens.com",
+      "role": "LOCAL ADMIN",
+      "projectRole": "PROJECT OWNER"
+    },
+    {
+      "uid": "65530cb3022db92f605fda6a",
+      "name": "SURAJ RAWAT",
+      "email": "suraj.rawat.ext@siemens.com",
+      "role": "ADMIN",
+      "projectRole": "PROJECT MEMBER"
+    },
+    {
+      "uid": "6551b3f37ca26970a5a97f92",
+      "name": "Kishor Kumar Khuntia",
+      "email": "kishor-kumar.khuntia@siemens.com",
+      "role": "ADMIN",
+      "projectRole": "PROJECT MEMBER"
+    },
+    {
+      "uid": "656d4c8f4d1fb30184fa8e6a",
+      "name": "Simja JK",
+      "email": "simja.jk@siemens.com",
+      "role": "ADMIN",
+      "projectRole": "PROJECT MEMBER"
+    },
+    {
+      "uid": "64b0e557e3280a909b3a3956",
+      "name": "Madhavi Mendhe",
+      "email": "madhavi.mendhe@siemens.com",
+      "role": "ADMIN",
+      "projectRole": "PROJECT MEMBER"
+    },
+    {
+      "uid": "654e087aa076a03586978e48",
+      "name": "Abhinav Gupta",
+      "email": "abhinav.gupta@siemens.com",
+      "role": "ADMIN",
+      "projectRole": "PROJECT MEMBER"
+    },
+    {
+      "uid": "6565723afdb1667feaea5210",
+      "name": "ASHWANI TANDON",
+      "email": "ashwani.tandon.ext@siemens.com",
+      "role": "ADMIN",
+      "projectRole": "PROJECT MEMBER"
+    }
+  ],
+  "assigneeDetails": {
+    "powerUsers": [],
+    "localAdmins": [
+      {
+        "uid": "654e089da076a03586978e49",
+        "name": "Pranita Nannaware",
+        "email": "pranita.nannaware@siemens.com",
+        "role": "LOCAL ADMIN",
+        "projectRole": "PROJECT OWNER"
+      }
+    ]
+  },
+  "scoping": "DONE",
+  "projectHC": 29,
+  "gidList": [
+    {
+      "gid": "ABC50001",
+      "version": "20230101",
+      "contractStatus": "Active"
+    },
+    {
+      "gid": "ABC50002",
+      "version": "20230101",
+      "contractStatus": "Active"
+    },
+    {
+      "gid": "ABC00374",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW DM VA BD",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR06",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00378",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW DM VA BDM",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Guangdong Sheng",
+      "locationOfficeCity": "Shenzhen, GD",
+      "locationOffice": "SZN J",
+      "gripPosition": "RD-PS-SWARC-PR08",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00392",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW IES PRM&D MK&BD AUTOMD",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR05b",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00397",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW STS SDPRM FL&T EFD",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR07",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00401",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "MG Electr Tech Co, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW STS ABU SWE CN",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR07",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00403",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "MG Electr Tech Co, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW STS ABU",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR05b",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00491",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW EDAGS TSS HAV&AE PR",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR09",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00495",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW EDAGS PR FSS CNCM",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR09",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00499",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW EDAGS PR FSS CNCM CF",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR09",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00523",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW ICS CAL DS TFM FP",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR06",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00530",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW ICS CAL DS TFM FP",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR08",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00536",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW EDAGS PR TS CALCN",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR09",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00586",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW EDAGS PR TS TSTCN",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR09",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00593",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW EDAGS PR FSS CNHG",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR09",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC00615",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "401V",
+      "areDesc": "Siemens EDA, Shanghai",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW ICS CAL DS TFM FP",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Product & Solution Development and Testing",
+      "countryRegionARE": "China",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Shanghai Shi",
+      "locationOfficeCity": "Shanghai, SH",
+      "locationOffice": "SHA SY",
+      "gripPosition": "RD-PS-SWARC-PR07",
+      "gripPositionDesc": "Software Architect",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC02662",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "404X",
+      "areDesc": "Mendix Tech B.V., Rotterdam",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW MNDX PRO&TECH BITS DA DW",
+      "jobFamily": "Information Technology",
+      "subJobFamily": "IT Value Center / Chapters & IT Delivery",
+      "countryRegionARE": "Netherlands",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Zuid-Holland",
+      "locationOfficeCity": "Rotterdam",
+      "locationOffice": "RTM W 197",
+      "gripPosition": "IT-VC-SOFTW-PR06",
+      "gripPositionDesc": "IT Software Developer",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC03198",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "404X",
+      "areDesc": "Mendix Tech B.V., Rotterdam",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI SW MNDX BSEN IT",
+      "jobFamily": "Information Technology",
+      "subJobFamily": "IT Value Center / Chapters & IT Delivery",
+      "countryRegionARE": "Netherlands",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Zuid-Holland",
+      "locationOfficeCity": "Rotterdam",
+      "locationOffice": "RTM W 197",
+      "gripPosition": "IT-VC-SOFTW-PR08",
+      "gripPositionDesc": "IT Software Developer",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC04004",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "408V",
+      "areDesc": "MG (India) Pvt, Delhi",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI IT SW PS SI ODT",
+      "jobFamily": "Information Technology",
+      "subJobFamily": "IT Value Center / Chapters & IT Delivery",
+      "countryRegionARE": "India",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Telangana",
+      "locationOfficeCity": "Hyderabad",
+      "locationOffice": "HYD HC",
+      "gripPosition": "IT-VC-SOFTW-PR06",
+      "gripPositionDesc": "IT Software Developer",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC04372",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "408V",
+      "areDesc": "S' EDA (India) P.L., Delhi",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI IT SW PS SI ODT",
+      "jobFamily": "Information Technology",
+      "subJobFamily": "IT Value Center / Chapters & IT Delivery",
+      "countryRegionARE": "India",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Telangana",
+      "locationOfficeCity": "Hyderabad",
+      "locationOffice": "HYD HC",
+      "gripPosition": "IT-VC-SOFTW-PR07",
+      "gripPositionDesc": "IT Software Developer",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC04419",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "408V",
+      "areDesc": "S' EDA (India) P.L., Delhi",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI IT SW PS SI ODT",
+      "jobFamily": "Information Technology",
+      "subJobFamily": "IT Value Center / Chapters & IT Delivery",
+      "countryRegionARE": "India",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Telangana",
+      "locationOfficeCity": "Hyderabad",
+      "locationOffice": "HYD HC",
+      "gripPosition": "IT-VC-SOFTW-PR07",
+      "gripPositionDesc": "IT Software Developer",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC04557",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "408V",
+      "areDesc": "S' EDA (India) P.L., Delhi",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI IT SW PS SI ODT",
+      "jobFamily": "Information Technology",
+      "subJobFamily": "IT Value Center / Chapters & IT Delivery",
+      "countryRegionARE": "India",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Telangana",
+      "locationOfficeCity": "Hyderabad",
+      "locationOffice": "HYD HC",
+      "gripPosition": "IT-VC-SOFTW-PR06",
+      "gripPositionDesc": "IT Software Developer",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC04645",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "408V",
+      "areDesc": "S' EDA (India) P.L., Delhi",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI IT SW PS SI ODT",
+      "jobFamily": "Information Technology",
+      "subJobFamily": "IT Value Center / Chapters & IT Delivery",
+      "countryRegionARE": "India",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Telangana",
+      "locationOfficeCity": "Hyderabad",
+      "locationOffice": "HYD HC",
+      "gripPosition": "IT-VC-SOFTW-PR07",
+      "gripPositionDesc": "IT Software Developer",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC04717",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "408V",
+      "areDesc": "S' EDA (India) P.L., Delhi",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI IT SW PS SI ODT",
+      "jobFamily": "Information Technology",
+      "subJobFamily": "IT Value Center / Chapters & IT Delivery",
+      "countryRegionARE": "India",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Uttar Pradesh",
+      "locationOfficeCity": "Noida",
+      "locationOffice": "NOI S142",
+      "gripPosition": "IT-VC-SOFTW-PR06",
+      "gripPositionDesc": "IT Software Developer",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC04859",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "408V",
+      "areDesc": "S' EDA (India) P.L., Delhi",
+      "businessUnit": "DI SW Software",
+      "orgCodePA": "DI IT SW PS SI ODT",
+      "jobFamily": "Information Technology",
+      "subJobFamily": "IT Value Center / Chapters & IT Delivery",
+      "countryRegionARE": "India",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Telangana",
+      "locationOfficeCity": "Hyderabad",
+      "locationOffice": "HYD HC",
+      "gripPosition": "IT-VC-SOFTW-PR05b",
+      "gripPositionDesc": "IT Software Developer",
+      "gripPositionType": "Professional & Expert",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC10266",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "4168",
+      "areDesc": "S' Schweiz AG, HQ SI",
+      "businessUnit": "SI Central Items",
+      "orgCodePA": "SI TI COE",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Research & Technology",
+      "countryRegionARE": "Switzerland",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Zug",
+      "locationOfficeCity": "Zug",
+      "locationOffice": "ZUG Z 7",
+      "gripPosition": "RD-RT-RETEC-HD999",
+      "gripPositionDesc": "Research & Technology Head",
+      "gripPositionType": "Head",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC24578",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "438Q",
+      "areDesc": "SMO GmbH",
+      "businessUnit": "SMO Software",
+      "orgCodePA": "SMO SW PF",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Research & Technology",
+      "countryRegionARE": "Germany",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Bayern",
+      "locationOfficeCity": "Munich",
+      "locationOffice": "MCH P",
+      "gripPosition": "RD-RT-RETEC-HD999",
+      "gripPositionDesc": "Research & Technology Head",
+      "gripPositionType": "Head",
+      "blueCollarWhiteCollar": "White Collar"
+    },
+    {
+      "gid": "ABC34036",
+      "version": "20230101",
+      "contractStatus": "Active",
+      "are": "438Q",
+      "areDesc": "SMO GmbH",
+      "businessUnit": "SMO CI Central Items",
+      "orgCodePA": "SMO SDT TEC",
+      "jobFamily": "Research & Development",
+      "subJobFamily": "Research & Technology",
+      "countryRegionARE": "Germany",
+      "countryRegionPlaceOfAction": "",
+      "countryRegionStateOffice": "Bayern",
+      "locationOfficeCity": "Erlangen",
+      "locationOffice": "ERL S SP 6",
+      "gripPosition": "RD-RT-RETEC-HD999",
+      "gripPositionDesc": "Research & Technology Head",
+      "gripPositionType": "Head",
+      "blueCollarWhiteCollar": "White Collar"
+    }
+  ],
+  "gidSummary": [
+    "ABC50001",
+    "ABC50002",
+    "ABC00374",
+    "ABC00378",
+    "ABC00392",
+    "ABC00397",
+    "ABC00401",
+    "ABC00403",
+    "ABC00491",
+    "ABC00495",
+    "ABC00499",
+    "ABC00523",
+    "ABC00530",
+    "ABC00536",
+    "ABC00586",
+    "ABC00593",
+    "ABC00615",
+    "ABC02662",
+    "ABC03198",
+    "ABC04004",
+    "ABC04372",
+    "ABC04419",
+    "ABC04557",
+    "ABC04645",
+    "ABC04717",
+    "ABC04859",
+    "ABC10266",
+    "ABC24578",
+    "ABC34036"
+  ],
+  "orgCodes": {
+    "SI TI COE": 1,
+    "DI SW ICS CAL DS TFM FP": 3,
+    "DI SW STS ABU": 1,
+    "DI SW EDAGS PR TS TSTCN": 1,
+    "DI SW DM VA BD": 1,
+    "SMO SW PF": 1,
+    "DI SW EDAGS PR FSS CNHG": 1,
+    "DI SW MNDX BSEN IT": 1,
+    "DI SW STS SDPRM FL&T EFD": 1,
+    "DI SW EDAGS TSS HAV&AE PR": 1,
+    "DI SW EDAGS PR TS CALCN": 1,
+    "SMO SDT TEC": 1,
+    "DI SW DM VA BDM": 1,
+    "DI IT SW PS SI ODT": 7,
+    "DI SW EDAGS PR FSS CNCM": 1,
+    "DI SW EDAGS PR FSS CNCM CF": 1,
+    "DI SW MNDX PRO&TECH BITS DA DW": 1,
+    "DI SW IES PRM&D MK&BD AUTOMD": 1,
+    "DI SW STS ABU SWE CN": 1
+  },
+  "isMigratedWS": false,
+  "isCopiedWS": false,
+  "jobProfiles": [
+    {
+      "uid": "6555eab7dd30a757fd28c922",
+      "isDeleted": false,
+      "name": "IT Software Developer",
+      "description": "sdasd",
+      "gripName": "IT Software Developer",
+      "gripPostion": [
+        "IT-VC-SOFTW-PR06",
+        "IT-VC-SOFTW-PR08",
+        "IT-VC-SOFTW-PR06",
+        "IT-VC-SOFTW-PR07",
+        "IT-VC-SOFTW-PR07",
+        "IT-VC-SOFTW-PR06",
+        "IT-VC-SOFTW-PR07",
+        "IT-VC-SOFTW-PR06",
+        "IT-VC-SOFTW-PR05b"
+      ],
+      "gripCodeCatalog": [
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999"
+      ],
+      "gripTask": [
+        {
+          "uid" : "64eca683179bcb3909434b1f"
+          ,"gripTaskDetail": "Develops business software applications, system software IT solutions and/or IT infrastructure services on the basis of functional specifications (customization or reuse/modification of system software and/or solutions as well as their development from scratch).",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b20"
+          ,"gripTaskDetail": "Consults customers in creating functional specifications.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b21"
+          ,"gripTaskDetail": "Evaluates vendor solutions and/or drafts program layouts. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b22"
+          ,"gripTaskDetail": "Performs bug verification and testing. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b23"
+          ,"gripTaskDetail": "Provides technical support for business applications (standard software and custom development).",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b24"
+          ,"gripTaskDetail": "Designs and realizes interfaces between business applications.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b25"
+          ,"gripTaskDetail": "Ensures the documentation of changes as well as plans and releases upgrades.",
+          "gripTaskType": "DEFAULT"
+        }
+      ],
+      "currentHeadCountSupply": 6,
+      "futureHeadCountSupply": 2,
+      "futureHeadCountDemand": 9,
+      "assignedFutureHCDemand": 0,
+      "assignedFutureHCSupply": 0,
+      "statusQuoHCAssigned": 2,
+      "futureStateHCAssigned": 5,
+      "isOriginFuture": false,
+      "isTwin": true,
+      "jobFamily": [
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology"
+      ],
+      "gidList": [],
+      "gidMappingStatus": "Unmapped",
+      "skillAssignments": [
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c922",
+          "skillAssignmentId": "6572da189fd7c469e4d651f5",
+          "skillId": "6572d9f99fd7c469e4d651f1",
+          "skillName": "Analytical problem solving and decision making",
+          "currentSkillLevel": "BEGINNER",
+          "futureSkillLevel": "BASIC",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        },
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c922",
+          "skillAssignmentId": "6572da189fd7c469e4d651f6",
+          "skillId": "6572d9f99fd7c469e4d651f2",
+          "skillName": "Attracting, engaging and retaining talent",
+          "currentSkillLevel": "BEGINNER",
+          "futureSkillLevel": "BASIC",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        },
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c922",
+          "skillAssignmentId": "6572da189fd7c469e4d651f7",
+          "skillId": "6572d9f99fd7c469e4d651f3",
+          "skillName": "Balanced scorecard",
+          "currentSkillLevel": "BEGINNER",
+          "futureSkillLevel": "BASIC",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        },
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c922",
+          "skillAssignmentId": "6572da189fd7c469e4d651f8",
+          "skillId": "6572d9f99fd7c469e4d651f4",
+          "skillName": "Building and leading effective teams",
+          "currentSkillLevel": "BEGINNER",
+          "futureSkillLevel": "BASIC",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        }
+      ],
+      "isMigrated": false
+    },
+    {
+      "uid":  "6555eab7dd30a757fd28c923"
+      , "isDeleted": false,
+      "name": "Research & Technology Head",
+      "description": "asdasd",
+      "gripName": "Research & Technology Head",
+      "gripPostion": [
+        "RD-RT-RETEC-HD999",
+        "RD-RT-RETEC-HD999",
+        "RD-RT-RETEC-HD999"
+      ],
+      "gripCodeCatalog": [
+        "RD-RT-RETEC-HD999",
+        "RD-RT-RETEC-HD999",
+        "RD-RT-RETEC-HD999"
+      ],
+      "gripTask": [
+        {
+          "uid" : "64eca683179bcb390943573c"
+          ,"gripTaskDetail": "Is responsible for all research and technology activities in the assigned R&D organization of a business.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb390943573d"
+          ,"gripTaskDetail": "Develops strategies and implement innovation programs to increase global competitiveness.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb390943573e"
+          ,"gripTaskDetail": "Plans and implements the R&D and CAPEX investments and controls it together with the corresponding Finance function.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb390943573f"
+          ,"gripTaskDetail": "Executes governance within the assigned part of the organization.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909435740"
+          ,"gripTaskDetail": "Defines function related strategies, policies and guidelines for the assigned part of the organization.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909435741"
+          ,"gripTaskDetail": "Heads functional organization assigned, and leads, motivates and develops all related management, professional and operational staff.",
+          "gripTaskType": "DEFAULT"
+        }
+      ],
+      "currentHeadCountSupply": 2,
+      "futureHeadCountSupply": 1,
+      "futureHeadCountDemand": 3,
+      "assignedFutureHCDemand": 0,
+      "assignedFutureHCSupply": 0,
+      "statusQuoHCAssigned": 0,
+      "futureStateHCAssigned": 0,
+      "isOriginFuture": false,
+      "isTwin": true,
+      "jobFamily": [
+        "Research & Development",
+        "Research & Development",
+        "Research & Development"
+      ],
+      "gidList": [],
+      "gidMappingStatus": "Unmapped",
+      "skillAssignments": [
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c923",
+          "skillAssignmentId": "6572da189fd7c469e4d651f9",
+          "skillId": "6572d9f99fd7c469e4d651f1",
+          "skillName": "Analytical problem solving and decision making",
+          "currentSkillLevel": "BASIC",
+          "futureSkillLevel": "ADVANCED",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+       
+        },
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c923",
+          "skillAssignmentId": "6572da189fd7c469e4d651fa",
+          "skillId": "6572d9f99fd7c469e4d651f2",
+          "skillName": "Attracting, engaging and retaining talent",
+          "currentSkillLevel": "BASIC",
+          "futureSkillLevel": "ADVANCED",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        },
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c923",
+          "skillAssignmentId": "6572da189fd7c469e4d651fb",
+          "skillId": "6572d9f99fd7c469e4d651f3",
+          "skillName": "Balanced scorecard",
+          "currentSkillLevel": "BASIC",
+          "futureSkillLevel": "ADVANCED",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        },
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c923",
+          "skillAssignmentId": "6572da189fd7c469e4d651fc",
+          "skillId": "6572d9f99fd7c469e4d651f4",
+          "skillName": "Building and leading effective teams",
+          "currentSkillLevel": "BASIC",
+          "futureSkillLevel": "ADVANCED",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        }
+      ],
+      "isMigrated": false
+    },
+    {
+      "uid":  "6555eab7dd30a757fd28c924"
+      , "isDeleted": false,
+      "name": "Software Architect",
+      "description": "dfssd",
+      "gripName": "Software Architect",
+      "gripPostion": [
+        "RD-PS-SWARC-PR06",
+        "RD-PS-SWARC-PR08",
+        "RD-PS-SWARC-PR05b",
+        "RD-PS-SWARC-PR07",
+        "RD-PS-SWARC-PR07",
+        "RD-PS-SWARC-PR05b",
+        "RD-PS-SWARC-PR09",
+        "RD-PS-SWARC-PR09",
+        "RD-PS-SWARC-PR09",
+        "RD-PS-SWARC-PR06",
+        "RD-PS-SWARC-PR08",
+        "RD-PS-SWARC-PR09",
+        "RD-PS-SWARC-PR09",
+        "RD-PS-SWARC-PR09",
+        "RD-PS-SWARC-PR07"
+      ],
+      "gripCodeCatalog": [
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999",
+        "RD-PS-SWARC-PR999"
+      ],
+      "gripTask": [
+        {
+          "uid" : "64eca683179bcb390943568e"
+          ,"gripTaskDetail": "Drives and guides a software architecture, i.e. a technical realization concept, that allows a cost efficient and timely realization of the software with appropriate quality, even in the face of challenging and changing requirements and realization technologies.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb390943568f"
+          ,"gripTaskDetail": "Validates system, customer, market or contract requirements, clarifies understanding and feasibility and translates them into software requirements.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909435690"
+          ,"gripTaskDetail": "Drives the elaboration of realization alternatives and the decision process.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909435691"
+          ,"gripTaskDetail": "Coaches and motivates a software development team regarding technical aspects; involves necessary experts from late phases, like operation or service.",
+          "gripTaskType": "DEFAULT"
+        }
+      ],
+      "currentHeadCountSupply": 15,
+      "futureHeadCountSupply": 6,
+      "futureHeadCountDemand": 22,
+      "assignedFutureHCDemand": 0,
+      "assignedFutureHCSupply": 0,
+      "statusQuoHCAssigned": 0,
+      "futureStateHCAssigned": 0,
+      "isOriginFuture": false,
+      "isTwin": true,
+      "jobFamily": [
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development",
+        "Research & Development"
+      ],
+      "gidList": [
+        "ABC00374",
+        "ABC00378",
+        "ABC00392",
+        "ABC00397",
+        "ABC00401",
+        "ABC00403",
+        "ABC00491",
+        "ABC00495",
+        "ABC00499",
+        "ABC00523",
+        "ABC00530",
+        "ABC00536",
+        "ABC00586",
+        "ABC00593",
+        "ABC00615"
+      ],
+      "gidMappingStatus": "Mapped",
+      "skillAssignments": [
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c924",
+          "skillAssignmentId": "6572da189fd7c469e4d651fd",
+          "skillId": "6572d9f99fd7c469e4d651f1",
+          "skillName": "Analytical problem solving and decision making",
+          "currentSkillLevel": "ADVANCED",
+          "futureSkillLevel": "EXPERT",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        },
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c924",
+          "skillAssignmentId": "6572da189fd7c469e4d651fe",
+          "skillId": "6572d9f99fd7c469e4d651f2",
+          "skillName": "Attracting, engaging and retaining talent",
+          "currentSkillLevel": "ADVANCED",
+          "futureSkillLevel": "EXPERT",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        },
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c924",
+          "skillAssignmentId": "6572da189fd7c469e4d651ff",
+          "skillId": "6572d9f99fd7c469e4d651f3",
+          "skillName": "Balanced scorecard",
+          "currentSkillLevel": "ADVANCED",
+          "futureSkillLevel": "EXPERT",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.538Z"
+          
+        },
+        {
+          "jobProfileId": "6555eab7dd30a757fd28c924",
+          "skillAssignmentId": "6572da189fd7c469e4d65200",
+          "skillId": "6572d9f99fd7c469e4d651f4",
+          "skillName": "Building and leading effective teams",
+          "currentSkillLevel": "ADVANCED",
+          "futureSkillLevel": "EXPERT",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.539Z"
+          
+        }
+      ],
+      "isMigrated": false
+    },
+    {
+      "uid":  "655de384eb7d9b746601a5e2"
+      , "isDeleted": false,
+      "name": "New Split 1",
+      "description": "ghfgh",
+      "gripName": "IT Software Developer",
+      "gripPostion": [
+        "IT-VC-SOFTW-PR06",
+        "IT-VC-SOFTW-PR08",
+        "IT-VC-SOFTW-PR06",
+        "IT-VC-SOFTW-PR07",
+        "IT-VC-SOFTW-PR07",
+        "IT-VC-SOFTW-PR06",
+        "IT-VC-SOFTW-PR07",
+        "IT-VC-SOFTW-PR06",
+        "IT-VC-SOFTW-PR05b"
+      ],
+      "gripCodeCatalog": [
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999",
+        "IT-VC-SOFTW-PR999"
+      ],
+      "gripTask": [
+        {
+          "uid" : "64eca683179bcb3909434b1f"
+          ,"gripTaskDetail": "Develops business software applications, system software IT solutions and/or IT infrastructure services on the basis of functional specifications (customization or reuse/modification of system software and/or solutions as well as their development from scratch).",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b20"
+          ,"gripTaskDetail": "Consults customers in creating functional specifications.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b21"
+          ,"gripTaskDetail": "Evaluates vendor solutions and/or drafts program layouts. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b22"
+          ,"gripTaskDetail": "Performs bug verification and testing. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b23"
+          ,"gripTaskDetail": "Provides technical support for business applications (standard software and custom development).",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b24"
+          ,"gripTaskDetail": "Designs and realizes interfaces between business applications.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909434b25"
+          ,"gripTaskDetail": "Ensures the documentation of changes as well as plans and releases upgrades.",
+          "gripTaskType": "DEFAULT"
+        }
+      ],
+      "currentHeadCountSupply": 3,
+      "futureHeadCountSupply": 1,
+      "futureHeadCountDemand": 4,
+      "assignedFutureHCDemand": 0,
+      "assignedFutureHCSupply": 0,
+      "statusQuoHCAssigned": 0,
+      "futureStateHCAssigned": 0,
+      "isOriginFuture": false,
+      "isTwin": true,
+      "jobFamily": [
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology",
+        "Information Technology"
+      ],
+      "gidList": [],
+      "gidMappingStatus": "Unmapped",
+      "skillAssignments": [
+        {
+          "jobProfileId": "655de384eb7d9b746601a5e2",
+          "skillAssignmentId": "6572da189fd7c469e4d65201",
+          "skillId": "6572d9f99fd7c469e4d651f1",
+          "skillName": "Analytical problem solving and decision making",
+          "currentSkillLevel": "EXPERT",
+          "futureSkillLevel": "BEGINNER",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.539Z"
+          
+        },
+        {
+          "jobProfileId": "655de384eb7d9b746601a5e2",
+          "skillAssignmentId": "6572da189fd7c469e4d65202",
+          "skillId": "6572d9f99fd7c469e4d651f2",
+          "skillName": "Attracting, engaging and retaining talent",
+          "currentSkillLevel": "EXPERT",
+          "futureSkillLevel": "BEGINNER",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.539Z"
+          
+        },
+        {
+          "jobProfileId": "655de384eb7d9b746601a5e2",
+          "skillAssignmentId": "6572da189fd7c469e4d65203",
+          "skillId": "6572d9f99fd7c469e4d651f3",
+          "skillName": "Balanced scorecard",
+          "currentSkillLevel": "EXPERT",
+          "futureSkillLevel": "BEGINNER",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.539Z"
+          
+        },
+        {
+          "jobProfileId": "655de384eb7d9b746601a5e2",
+          "skillAssignmentId": "6572da189fd7c469e4d65204",
+          "skillId": "6572d9f99fd7c469e4d651f4",
+          "skillName": "Building and leading effective teams",
+          "currentSkillLevel": "EXPERT",
+          "futureSkillLevel": "BEGINNER",
+          "createdBy": "654e089da076a03586978e49",
+          "createdOn": "2023-12-08T08:55:52.539Z"
+          
+        }
+      ],
+      "isMigrated": false
+    },
+    {
+      "uid":  "657d117480563663c40d5fc4"
+      , "isDeleted": false,
+      "name": "t3",
+      "description": "t3",
+      "gripName": "Associate - Audit",
+      "gripPostion": [
+        "AU-AU-ASSAU-PR999"
+      ],
+      "gripCodeCatalog": [
+        "AU-AU-ASSAU-PR999"
+      ],
+      "gripTask": [
+        {
+          "uid" : "657d117480563663c40d5fc5"
+          ,"gripTaskDetail": "Plans and prepares the assigned Audit engagement tasks.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "657d117480563663c40d5fc6"
+          ,"gripTaskDetail": "Assists in determining Audit program customization requirements and respective program steps. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "657d117480563663c40d5fc7"
+          ,"gripTaskDetail": "Performs the defined Audit program steps, and documents all risks and findings, in a collaborative manner.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "657d117480563663c40d5fc8"
+          ,"gripTaskDetail": "Provides timely status updates and reports. Ensures communication of potential issues, findings and risks, and actively seeks clarification.   ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "657d117480563663c40d5fc9"
+          ,"gripTaskDetail": "Reviews work papers and final Audit report. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "657d117480563663c40d5fca"
+          ,"gripTaskDetail": "Provides constructive feedback to Audit team members.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "657d117480563663c40d5fcb"
+          ,"gripTaskDetail": "Participates in providing written and verbal feedback to management of the unit audited. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "657d117480563663c40d5fcc"
+          ,"gripTaskDetail": "Participates in project planning, administration, budgeting and staffing.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "657d117480563663c40d5fcd"
+          ,"gripTaskDetail": "Builds trusted working relationships with the Auditee, solidifying the organization as a trusted advisor.",
+          "gripTaskType": "DEFAULT"
+        }
+      ],
+      "futureHeadCountSupply": 10,
+      "futureHeadCountDemand": 15,
+      "assignedFutureHCDemand": 0,
+      "assignedFutureHCSupply": 0,
+      "statusQuoHCAssigned": 0,
+      "futureStateHCAssigned": 0,
+      "isOriginFuture": true,
+      "isTwin": false,
+      "jobFamily": [
+        "Assurance"
+      ],
+      "gidList": [],
+      "gidMappingStatus": "Unmapped",
+      "isMigrated": false
+    },
+    {
+      "uid":  "6581907824a026271dce205c"
+      , "isDeleted": false,
+      "name": "Split 1 research ",
+      "description": "asdasd",
+      "gripName": "Research & Technology Head",
+      "gripPostion": [
+        "RD-RT-RETEC-HD999",
+        "RD-RT-RETEC-HD999",
+        "RD-RT-RETEC-HD999"
+      ],
+      "gripCodeCatalog": [
+        "RD-RT-RETEC-HD999",
+        "RD-RT-RETEC-HD999",
+        "RD-RT-RETEC-HD999"
+      ],
+      "gripTask": [
+        {
+          "uid" : "64eca683179bcb390943573c"
+          ,"gripTaskDetail": "Is responsible for all research and technology activities in the assigned R&D organization of a business.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb390943573d"
+          ,"gripTaskDetail": "Develops strategies and implement innovation programs to increase global competitiveness.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb390943573e"
+          ,"gripTaskDetail": "Plans and implements the R&D and CAPEX investments and controls it together with the corresponding Finance function.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb390943573f"
+          ,"gripTaskDetail": "Executes governance within the assigned part of the organization.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909435740"
+          ,"gripTaskDetail": "Defines function related strategies, policies and guidelines for the assigned part of the organization.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "64eca683179bcb3909435741"
+          ,"gripTaskDetail": "Heads functional organization assigned, and leads, motivates and develops all related management, professional and operational staff.",
+          "gripTaskType": "DEFAULT"
+        }
+      ],
+      "currentHeadCountSupply": 1,
+      "futureHeadCountSupply": 0,
+      "futureHeadCountDemand": 1,
+      "assignedFutureHCDemand": 0,
+      "assignedFutureHCSupply": 0,
+      "statusQuoHCAssigned": 0,
+      "futureStateHCAssigned": 0,
+      "isOriginFuture": false,
+      "isTwin": true,
+      "jobFamily": [
+        "Research & Development",
+        "Research & Development",
+        "Research & Development"
+      ],
+      "gidList": [],
+      "gidMappingStatus": "Unmapped",
+      "isMigrated": false
+    },
+    {
+      "uid":  "658191ab24a026271dce205e"
+      , "isDeleted": false,
+      "name": "Undefined Job Profile",
+      "currentHeadCountSupply": 2,
+      "futureHeadCountSupply": 0,
+      "futureHeadCountDemand": 0,
+      "assignedFutureHCDemand": 0,
+      "assignedFutureHCSupply": 0,
+      "statusQuoHCAssigned": 0,
+      "futureStateHCAssigned": 0,
+      "isOriginFuture": false,
+      "isTwin": true,
+      "gidList": [
+        "ABC50001",
+        "ABC50002"
+      ],
+      "gidMappingStatus": "Mapped",
+      "isMigrated": false
+    },
+    {
+      "uid":  "659541698fcf6b517875d6ee"
+      , "isDeleted": false,
+      "name": "LastProfile",
+      "description": "",
+      "gripName": "Assurance Practice Manager - Audit",
+      "gripPositionType": [
+        "Manager"
+      ],
+      "gripPostion": [
+        "AU-AU-ASSAU-MA999"
+      ],
+      "gripCodeCatalog": [
+        "AU-AU-ASSAU-MA999"
+      ],
+      "gripTask": [
+        {
+          "uid" : "659541698fcf6b517875d6ef"
+          ,"gripTaskDetail": "Ensures dedicated professionals progress in the Grow / Develop model.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f0"
+          ,"gripTaskDetail": "Contributes to the advancement of the Assurance function through thought leadership, diversity initiatives, etc.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f1"
+          ,"gripTaskDetail": "Liaises with external Auditors / stakeholders.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f2"
+          ,"gripTaskDetail": "Responsible for maintaining connections with alumni and maintaining a business network to facilitate development of professionals.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f3"
+          ,"gripTaskDetail": "Supports the set-up of engagement plans and coordinates the respective resources needed in the team. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f4"
+          ,"gripTaskDetail": "Accountable for proper Audit engagement execution including administration and resource management.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f5"
+          ,"gripTaskDetail": "Performs quality reviews of Audit engagement reports and results accomplished in the responsible engagements.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f6"
+          ,"gripTaskDetail": "Provides guidance to assigned engagement teams and provides written and verbal performance reviews. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f7"
+          ,"gripTaskDetail": "Develops, coordinates and ensures Audit engagement execution associated with a defined Audit topic or on a global or regional basis.   ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f8"
+          ,"gripTaskDetail": "Liaises with local and business management, and involves external Audit professional services in the completion of Audit assignments. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6f9"
+          ,"gripTaskDetail": "Manages organization unit(s) assigned, and leads and/or coordinates dedicated professionals. ",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6fa"
+          ,"gripTaskDetail": "Provides opportunities and encourages lifelong learning among dedicated professionals.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6fb"
+          ,"gripTaskDetail": "Collaborates with Senior Management to decide on action plans to solve critical compliance risks or challenges.",
+          "gripTaskType": "DEFAULT"
+        },
+        {
+          "uid" : "659541698fcf6b517875d6fc"
+          ,"gripTaskDetail": "Contributes to recruiting activities; identifies top talent and participates in interviews.",
+          "gripTaskType": "DEFAULT"
+        }
+      ],
+      "futureHeadCountSupply": 5,
+      "futureHeadCountDemand": 5,
+      "statusQuoHCAssigned": 0,
+      "futureStateHCAssigned": 0,
+      "isOriginFuture": true,
+      "isTwin": false,
+      "jobFamily": [
+        "Assurance"
+      ],
+      "gidList": [],
+      "gidMappingStatus": "Unmapped",
+      "isMigrated": false
+    }
+  ],
+  "statusQuoGripDetails": {
+    "Software Architect": [
+      "ABC00374",
+      "ABC00378",
+      "ABC00392",
+      "ABC00397",
+      "ABC00401",
+      "ABC00403",
+      "ABC00491",
+      "ABC00495",
+      "ABC00499",
+      "ABC00523",
+      "ABC00530",
+      "ABC00536",
+      "ABC00586",
+      "ABC00593",
+      "ABC00615"
+    ],
+    "IT Software Developer": [
+      "ABC02662",
+      "ABC03198",
+      "ABC04004",
+      "ABC04372",
+      "ABC04419",
+      "ABC04557",
+      "ABC04645",
+      "ABC04717",
+      "ABC04859"
+    ],
+    "Research & Technology Head": [
+      "ABC10266",
+      "ABC24578",
+      "ABC34036"
+    ]
+  },
+  "skills": [
+    {
+      "uid": "6572d9f99fd7c469e4d651f1",
+      "lexId": "lex_skill_611105",
+      "name": "Analytical problem solving and decision making",
+      "description": "\n\tAnalyzing problems and providing solutions in a structured way involving all relevant stakeholders.\n\tAnticipating problem areas and associated risk levels.\n\tAnalyzing multiple alternatives, risks and benefits for a range of potential solutions.\n\n",
+      "isOriginFuture": false,
+      "skillCategory": {
+        "name": "Leadership"
+      },
+      "mySkill": true,
+      "createdBy": "654e089da076a03586978e49",
+      "createdOn":  "2023-12-08T08:55:21.565Z"
+      
+    },
+    {
+      "uid": "6572d9f99fd7c469e4d651f2",
+      "lexId": "lex_skill_1412504",
+      "name": "Attracting, engaging and retaining talent",
+      "description": " Establishing systems and processes to attract, develop, engage, and retain talented individuals; creating a work environment where people can realize their full potential, thus allowing the organization to meet current and future business challenges. Initiating strategies to develop internal talent while balancing that effort with external hiring; Targeting challenging developmental assignments that build individual confidence and organizational capability; Taking an individual’s potential to learn into consideration instead of solely focusing on existing skills; Allocating sufficient resources to learning and development. Emphasizing retention – Establishing systems to retain talented individuals; addressing employees’ needs for career satisfaction and engagement (e.g., compensation & benefits, development opportunities, work environment). Creating a team culture – Creating purpose by convening people around common causes; Considering personal fit during the hiring stage; Investing in diversity (gender, age, nationality, ethnic, mindset or cultural differences).",
+      "isOriginFuture": false,
+      "skillCategory": {
+        "name": "Leadership"
+      },
+      "mySkill": true,
+      "createdBy": "654e089da076a03586978e49",
+      "createdOn": "2023-12-08T08:55:21.565Z"
+      
+    },
+    {
+      "uid": "6572d9f99fd7c469e4d651f3",
+      "lexId": "lex_skill_1466652",
+      "name": "Balanced scorecard",
+      "description": "The Balanced Scorecard concept focuses on strategic and operational Key Performance Indicators (KPIs) reported on a quarterly basis.",
+      "isOriginFuture": false,
+      "skillCategory": {
+        "name": "Leadership"
+      },
+      "mySkill": true,
+      "createdBy": "654e089da076a03586978e49",
+      "createdOn": "2023-12-08T08:55:21.565Z"
+      
+    },
+    {
+      "uid": "6572d9f99fd7c469e4d651f4",
+      "lexId": "lex_skill_20410107",
+      "name": "Building and leading effective teams",
+      "description": "Fostering team skills and motivation to achieve a common task.\n",
+      "isOriginFuture": false,
+      "skillCategory": {
+        "name": "Leadership"
+      },
+      "mySkill": true,
+      "createdBy": "654e089da076a03586978e49",
+      "createdOn": "2023-12-08T08:55:21.565Z"
+      
+    }
+  ],
+  "trends": [
+    {
+      "uid":  "6565ba762563f416c896c11b",
+      "impactType": "Trends",
+      "impactCategory": "Artificial Intelligence",
+      "impactSubCategory": "A",
+      "description": "",
+      "isDeleted": true,
+      "impactedJobProfiles": []
+    },
+    {
+      "uid":  "658193040238b62fb007ad5c",
+      "impactType": "Trends",
+      "impactCategory": "Artificial Intelligence",
+      "impactSubCategory": "Trends 1",
+      "description": "",
+      "isDeleted": false,
+      "impactedJobProfiles": [
+        {
+          "trendAndBOId": "658193040238b62fb007ad5c",
+          "jobProfileId": "6555eab7dd30a757fd28c922",
+          "jobProfileName": "IT Software Developer",
+          "impactOnHCDemand": "INCREASE",
+          "impactOnSkill": "HIGH"
+        },
+        {
+          "trendAndBOId": "658193040238b62fb007ad5c",
+          "jobProfileId": "6555eab7dd30a757fd28c923",
+          "jobProfileName": "Research & Technology Head",
+          "impactOnHCDemand": "DECREASE",
+          "impactOnSkill": "MEDIUM"
+        },
+        {
+          "trendAndBOId": "658193040238b62fb007ad5c",
+          "jobProfileId": "6555eab7dd30a757fd28c924",
+          "jobProfileName": "Software Architect",
+          "impactOnHCDemand": "STABLE",
+          "impactOnSkill": "LOW"
+        },
+        {
+          "trendAndBOId": "658193040238b62fb007ad5c",
+          "jobProfileId": "655de384eb7d9b746601a5e2",
+          "jobProfileName": "Sp1",
+          "impactOnHCDemand": "INCREASE",
+          "impactOnSkill": "HIGH"
+        },
+        {
+          "trendAndBOId": "658193040238b62fb007ad5c",
+          "jobProfileId": "6581907824a026271dce205c",
+          "jobProfileName": "Split 1 research ",
+          "impactOnHCDemand": "DECREASE",
+          "impactOnSkill": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "uid":  "658429d20238b62fb007ad6f",
+      "impactType": "Trends",
+      "impactCategory": "Artificial Intelligence",
+      "impactSubCategory": "t2222",
+      "description": "",
+      "isDeleted": false,
+      "impactedJobProfiles": [
+        {
+          "trendAndBOId": "658429d20238b62fb007ad6f",
+          "jobProfileId": "6555eab7dd30a757fd28c922",
+          "jobProfileName": "IT Software Developer",
+          "impactOnHCDemand": "INCREASE",
+          "impactOnSkill": "HIGH"
+        }
+      ]
+    }
+  ],
+  "matrixes": [],
+  "developmentPath": [],
+  "latestMatrixDetails": [
+    {
+      "uid":  "6572f185ab857a2f9243e55c",
+      "matrixName": "M1",
+      "description": "",
+      "associatedJobProfiles": {
+        "statusQuoJPIds": [
+          "6555eab7dd30a757fd28c922",
+          "6555eab7dd30a757fd28c923",
+          "6555eab7dd30a757fd28c924",
+          "655de384eb7d9b746601a5e2"
+        ],
+        "futureStateJPIds": [
+          "6555eab7dd30a757fd28c922",
+          "6555eab7dd30a757fd28c923",
+          "6555eab7dd30a757fd28c924",
+          "655de384eb7d9b746601a5e2",
+          "6569b34155ab957365d96325"
+        ]
+      },
+      "measures": [
+        {
+          "uid": "65730195ebfa214a97f18584",
+          "statusQuoJPId": "6555eab7dd30a757fd28c922",
+          "futureStateJPId": "6555eab7dd30a757fd28c922",
+          "measuresType": "MAINTAIN",
+          "measureConfiguration": [
+            {
+              "tier1": "MAINTAIN",
+              "assignedHeadCount": 1,
+              "availableHeadCount": 6,
+              "notes": []
+            }
+          ],
+          "createdOn": "2023-12-07T18:30:00.000Z",
+          "createdBy": "pranita.nannaware@siemens.com",
+          "updatedOn": "2023-12-07T18:30:00.000Z",
+          "updatedBy": "pranita.nannaware@siemens.com"
+        },
+        {
+          "uid": "65731081ebfa214a97f1858b",
+          "statusQuoJPId": "6555eab7dd30a757fd28c922",
+          "futureStateJPId": "6555eab7dd30a757fd28c922",
+          "measuresType": "WIN",
+          "measureConfiguration": [
+            {
+              "tier1": "WIN",
+              "tier2Data": [
+                {
+                  "tier2": "WIN_2GROWTH_HIRE",
+                  "isSharedHC": false,
+                  "tier3Data": [
+                    {
+                      "isSharedHC": false,
+                      "tier3": "WIN_2GROWTH_HIRE_3EXTERNAL_HIRE",
+                      "assignedHeadCount": 1,
+                      "availableHeadCount": 4,
+                      "measureCost": 100,
+                      "notes": []
+                    }
+                  ],
+                  "assignedHeadCount": 1,
+                  "availableHeadCount": 4,
+                  "notes": []
+                }
+              ],
+              "assignedHeadCount": 1,
+              "availableHeadCount": 4,
+              "notes": []
+            }
+          ],
+          "createdOn": "2023-12-07T18:30:00.000Z",
+          "createdBy": "pranita.nannaware@siemens.com",
+          "updatedOn": "2023-12-07T18:30:00.000Z",
+          "updatedBy": "pranita.nannaware@siemens.com"
+        },
+        {
+          "uid": "657310adebfa214a97f1858c",
+          "statusQuoJPId": "6555eab7dd30a757fd28c922",
+          "futureStateJPId": "6555eab7dd30a757fd28c922",
+          "measuresType": "GROW",
+          "measureConfiguration": [
+            {
+              "tier1": "GROW",
+              "tier2Data": [
+                {
+                  "tier2": "GROW_2UPSKILL",
+                  "isSharedHC": false,
+                  "tier3Data": [
+                    {
+                      "isSharedHC": true,
+                      "tier3": "GROW_2UPSKILL_3MY_LEARNING_WORLD",
+                      "assignedHeadCount": 1,
+                      "availableHeadCount": 4,
+                      "notes": []
+                    }
+                  ],
+                  "assignedHeadCount": 1,
+                  "availableHeadCount": 4,
+                  "notes": []
+                }
+              ],
+              "assignedHeadCount": 1,
+              "availableHeadCount": 4,
+              "notes": []
+            }
+          ],
+          "createdOn": "2023-12-07T18:30:00.000Z",
+          "createdBy": "pranita.nannaware@siemens.com",
+          "updatedOn": "2023-12-07T18:30:00.000Z",
+          "updatedBy": "pranita.nannaware@siemens.com"
+        },
+        {
+          "uid": "6573191bebfa214a97f1859b",
+          "statusQuoJPId": "6555eab7dd30a757fd28c922",
+          "futureStateJPId": "6555eab7dd30a757fd28c923",
+          "measuresType": "GROW",
+          "measureConfiguration": [
+            {
+              "tier1": "GROW",
+              "tier2Data": [
+                {
+                  "tier2": "GROW_2RESKILL",
+                  "isSharedHC": false,
+                  "tier3Data": [
+                    {
+                      "isSharedHC": false,
+                      "tier3": "GROW_2RESKILL_3SITECSKILLS",
+                      "assignedHeadCount": 1,
+                      "availableHeadCount": 1,
+                      "notes": []
+                    }
+                  ],
+                  "assignedHeadCount": 1,
+                  "availableHeadCount": 1,
+                  "notes": []
+                }
+              ],
+              "assignedHeadCount": 1,
+              "availableHeadCount": 1,
+              "notes": []
+            }
+          ],
+          "createdOn": "2023-12-07T18:30:00.000Z",
+          "createdBy": "pranita.nannaware@siemens.com",
+          "updatedOn": "2023-12-07T18:30:00.000Z",
+          "updatedBy": "pranita.nannaware@siemens.com"
+        },
+        {
+          "uid": "659662728b27bd3852b835de",
+          "statusQuoJPId": "6555eab7dd30a757fd28c924",
+          "futureStateJPId": "6555eab7dd30a757fd28c922",
+          "measuresType": "WIN",
+          "measureConfiguration": [
+            {
+              "tier1": "WIN",
+              "assignedHeadCount": 3,
+              "availableHeadCount": 9,
+              "notes": []
+            }
+          ],
+          "createdOn": "2024-01-03T18:30:00.000Z",
+          "createdBy": "abhinav.gupta@siemens.com",
+          "updatedOn": "2024-01-03T18:30:00.000Z",
+          "updatedBy": "abhinav.gupta@siemens.com"
+        },
+        {
+          "uid": "657317fdebfa214a97f1859a",
+          "statusQuoJPId": "6555eab7dd30a757fd28c922",
+          "futureStateJPId": "6555eab7dd30a757fd28c922",
+          "measuresType": "RESHUFFLE",
+          "measureConfiguration": [
+            {
+              "tier1": "RESHUFFLE",
+              "tier2Data": [
+                {
+                  "tier2": "RESHUFFLE_2INVOLUNTARY_EXITS",
+                  "isSharedHC": false,
+                  "tier3Data": [
+                    {
+                      "isSharedHC": false,
+                      "tier3": "RESHUFFLE_2INVOLUNTARY_EXITS_3WITH_OUTPLACEMENT",
+                      "assignedHeadCount": 1,
+                      "availableHeadCount": 8,
+                      "notes": []
+                    }
+                  ],
+                  "assignedHeadCount": 1,
+                  "availableHeadCount": 8,
+                  "notes": []
+                },
+                {
+                  "tier2": "RESHUFFLE_2VOLUNTARY_EXITS",
+                  "isSharedHC": false,
+                  "tier3Data": [
+                    {
+                      "isSharedHC": false,
+                      "tier3": "RESHUFFLE_2VOLUNTARY_EXITS_3WITHOUT_OUTPLACEMENT",
+                      "assignedHeadCount": 1,
+                      "availableHeadCount": 8,
+                      "notes": []
+                    }
+                  ],
+                  "assignedHeadCount": 1,
+                  "availableHeadCount": 8,
+                  "notes": []
+                }
+              ],
+              "assignedHeadCount": 4,
+              "availableHeadCount": 8,
+              "notes": []
+            }
+          ],
+          "createdOn": "2023-12-07T18:30:00.000Z",
+          "createdBy": "pranita.nannaware@siemens.com",
+          "updatedOn": "2024-01-03T18:30:00.000Z",
+          "updatedBy": "abhinav.gupta@siemens.com"
+        }
+      ]
+    },
+    {
+      "uid":  "65731957ebfa214a97f1859c",
+      "matrixName": "M2",
+      "description": "",
+      "associatedJobProfiles": {
+        "statusQuoJPIds": [
+          "6555eab7dd30a757fd28c922",
+          "6555eab7dd30a757fd28c923",
+          "6555eab7dd30a757fd28c924",
+          "655de384eb7d9b746601a5e2"
+        ],
+        "futureStateJPIds": [
+          "6555eab7dd30a757fd28c922",
+          "6555eab7dd30a757fd28c923",
+          "6555eab7dd30a757fd28c924",
+          "655de384eb7d9b746601a5e2",
+          "6569b34155ab957365d96325"
+        ]
+      }
+    },
+    {
+      "uid":  "658122d938c91f4ed407aca9",
+      "matrixName": "Test",
+      "description": "ets",
+      "associatedJobProfiles": {
+        "statusQuoJPIds": [
+          "6555eab7dd30a757fd28c922",
+          "655de384eb7d9b746601a5e2",
+          "6581907824a026271dce205c"
+        ],
+        "futureStateJPIds": [
+          "6555eab7dd30a757fd28c922",
+          "6555eab7dd30a757fd28c923",
+          "6555eab7dd30a757fd28c924",
+          "655de384eb7d9b746601a5e2",
+          "657d117480563663c40d5fc4"
+        ]
+      }
+    },
+    {
+      "uid":  "658126eb38c91f4ed407acaa",
+      "matrixName": "test",
+      "description": "",
+      "associatedJobProfiles": {
+        "statusQuoJPIds": [
+          "6555eab7dd30a757fd28c922",
+          "6555eab7dd30a757fd28c923"
+        ],
+        "futureStateJPIds": [
+          "6555eab7dd30a757fd28c922",
+          "6555eab7dd30a757fd28c923",
+          "6555eab7dd30a757fd28c924",
+          "655de384eb7d9b746601a5e2"
+        ]
+      }
+    },
+    {
+      "uid":  "6581283138c91f4ed407acab",
+      "matrixName": "matt",
+      "description": ""
+    },
+    {
+      "uid":  "65814d8e38c91f4ed407acee",
+      "matrixName": "Abhi",
+      "description": "",
+      "associatedJobProfiles": {
+        "statusQuoJPIds": [
+          "6555eab7dd30a757fd28c922",
+          "6555eab7dd30a757fd28c923",
+          "6555eab7dd30a757fd28c924",
+          "655de384eb7d9b746601a5e2"
+        ],
+        "futureStateJPIds": [
+          "6555eab7dd30a757fd28c923"
+        ]
+      }
+    },
+    {
+      "uid":  "6581788824a026271dce2040",
+      "matrixName": "Abhi 2",
+      "description": ""
+    },
+    {
+      "uid":  "6582a4c424a026271dce2063",
+      "matrixName": "bug ",
+      "description": ""
+    },
+    {
+      "uid":  "6582a9df24a026271dce2065",
+      "matrixName": "test3",
+      "description": ""
+    },
+    {
+      "uid":  "6583e2c75199023007ae62aa",
+      "matrixName": "t",
+      "description": ""
+    },
+    {
+      "uid":  "6583e2e35199023007ae62ab",
+      "matrixName": "test56",
+      "description": "",
+      "associatedJobProfiles": {
+        "statusQuoJPIds": [
+          "6555eab7dd30a757fd28c922"
+        ],
+        "futureStateJPIds": [
+          "6555eab7dd30a757fd28c922"
+        ]
+      }
+    },
+    {
+      "uid":  "65850cc05199023007ae631d",
+      "matrixName": "hj",
+      "description": ""
+    }
+  ],
+  "levers": [
+    {
+      "uid":  "6579ce380b30457bd2456ebf",
+      "leverName": "LS1ak",
+      "description": "",
+      "index": 1,
+      "leverDirection": "POSITIVE",
+      "leverCategory": "SUPPLY",
+      "isGlobal": false,
+      "isAssigned": false,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "657aa808a728e8514f183640",
+      "leverName": "ls2",
+      "description": "",
+      "index": 3,
+      "leverDirection": "POSITIVE",
+      "leverCategory": "SUPPLY",
+      "isGlobal": false,
+      "isAssigned": false,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "657c0f895ba2d32b4f5de535",
+      "leverName": "Test",
+      "description": "",
+      "index": 0,
+      "leverDirection": "POSITIVE",
+      "leverCategory": "DEMAND",
+      "isGlobal": false,
+      "isAssigned": true,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "657c0f895ba2d32b4f5de536",
+      "leverName": "Test2t",
+      "description": "",
+      "index": 1,
+      "leverDirection": "POSITIVE",
+      "leverCategory": "DEMAND",
+      "isGlobal": false,
+      "isAssigned": true,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "657c22ed5ba2d32b4f5de553",
+      "leverName": "test3",
+      "description": "",
+      "index": 2,
+      "leverDirection": "POSITIVE",
+      "leverCategory": "DEMAND",
+      "isGlobal": false,
+      "isAssigned": false,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "657c4d1dd44fa43364f0d1d2",
+      "leverName": "Test23",
+      "description": "",
+      "index": 5,
+      "leverDirection": "POSITIVE",
+      "leverCategory": "SUPPLY",
+      "isGlobal": false,
+      "isAssigned": false,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "65811d7e38c91f4ed407aca6",
+      "leverName": "asdasdasd",
+      "description": "s",
+      "index": 2,
+      "leverDirection": "POSITIVE",
+      "leverCategory": "SUPPLY",
+      "isGlobal": false,
+      "isAssigned": false,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "6582c9d8b696d26dddc8c49a"
+      ,"leverName": "new",
+      "description": "",
+      "index": 7,
+      "leverDirection": "POSITIVE",
+      "leverCategory": "SUPPLY",
+      "isGlobal": false,
+      "isAssigned": false,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "659657318b27bd3852b835d1"
+      ,"leverName": "delete",
+      "description": "",
+      "index": 0,
+      "leverDirection": "NEGATIVE",
+      "leverCategory": "SUPPLY",
+      "isGlobal": false,
+      "isAssigned": false,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "6596573a8b27bd3852b835d2"
+      ,"leverName": "delete 2",
+      "description": "",
+      "index": 4,
+      "leverDirection": "NEGATIVE",
+      "leverCategory": "SUPPLY",
+      "isGlobal": false,
+      "isAssigned": true,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "659cca9867ea276d2bb36d51"
+      ,"leverName": "pn",
+      "description": "",
+      "index": 6,
+      "leverDirection": "STABLE",
+      "leverCategory": "SUPPLY",
+      "isGlobal": false,
+      "isAssigned": true,
+      "source": "LEVER"
+    },
+    {
+      "uid":  "659e3cf68a6a95345078bd70"
+      ,"leverName": "Test121",
+      "description": "",
+      "index": 4,
+      "leverDirection": "POSITIVE",
+      "leverCategory": "DEMAND",
+      "isGlobal": false,
+      "isAssigned": false,
+      "source": "LEVER"
+    }
+  ],
+  "hcAssignmentEntitySupply": {
+    "hcAssignmentId": "657705a05baedc09e7510bbf",
+    "assignedBy": "YEARS",
+    "data": [
+      {
+        "aggregatedHC": 27,
+        "futureHC": 10,
+        "futureHCPercentage": 37,
+        "differenceHC": -17,
+        "differenceHCPercentage": -63,
+        "leverId": "",
+        "leverName": "",
+        "leverType": "",
+        "jobProfileId": "",
+        "jobProfileName": "",
+        "yearData": [
+          {
+            "yearIndex": 0,
+            "yearHC": -5,
+            "yearPercentage": -18.5
+          },
+          {
+            "yearIndex": 1,
+            "yearHC": -4,
+            "yearPercentage": -14.8
+          },
+          {
+            "yearIndex": 2,
+            "yearHC": -4,
+            "yearPercentage": -14.8
+          },
+          {
+            "yearIndex": 3,
+            "yearHC": -4,
+            "yearPercentage": -14.8
+          }
+        ]
+      }
+    ]
+  },
+  "hcAssignmentEntityDemand": {
+    "hcAssignmentId": "657842e4f0ee986a522ecb66",
+    "assignedBy": "NONE",
+    "data": [
+      {
+        "aggregatedHC": 27,
+        "futureHC": 40,
+        "futureHCPercentage": 148.1,
+        "differenceHC": 13,
+        "differenceHCPercentage": 48.1,
+        "leverId": "",
+        "leverName": "",
+        "leverType": "",
+        "jobProfileId": "",
+        "jobProfileName": "",
+        "yearData": []
+      }
+    ]
+  },
+  "hasLever": true,
+  "_class": "com.siemens.nextwork.project.model.Workstream"
+}]

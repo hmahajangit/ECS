@@ -1,75 +1,76 @@
 default:
-  image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-terraform-awscli:15.0.0
+  image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-terraform-awscli:1.5.0-v2-helm3
 
-variables: 
+variables:
+  PROJECT_SONAR_KEY: io.exnihilo
   http_proxy: "$CODE_PROXY"
   https_proxy: "$CODE_PROXY"
-  no_proxy: "127.0.0.1,localhost,cr.siemens.com,code.siemens.com,.siemens.com"
+  no_proxy: "127.0.0.1,localhost,cr.siemens.com,code.siemens.com,digicon.siemens.com,intranet.collaboration.energy.siemens.com"
   PROJECT_NAME: nextwork
-  NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+  APP_USER: user
+  APP_DIR: /app
 
 stages:
   - Test and Lint
+  - pre-build
   - generate-cert
-  - Build
+  - build
+  - publish-to-sonar
+  #  - publish-to-nexus
   - Docker Image Push
-  - hmnextwork Plan
-  - hmnextwork Apply
-  #- UAT Plan
-  #- UAT Apply
-  #- Production Plan
-  #- Production Apply
+  - Staging Plan
+  - Staging Apply
+  - UAT Plan
+  - UAT Apply
+  - Test and Lint prod
+  - Production Plan
+  - Production Apply
   - Destroy
 
-.set_aws_account_cred_script : &set_aws_account_cred_script
-  - export AWS_REGION=$(region_var_name=AWS_REGION ; echo ${!region_var_name:-$DEFAULT_AWS_REGION})
+.set_aws_account_cred_script: &set_aws_account_cred_script
+  - export AWS_REGION=$(region_var_name=${ENV}_AWS_REGION ; echo ${!region_var_name:-$DEFAULT_AWS_REGION})
+  - export AWS_ACCOUNT_ID=$(region_var_name=${ENV}_AWS_ACCOUNT_ID ; echo ${!region_var_name:-$AWS_ACCOUNT_ID})
   - |
     export $(printf "AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s" \
       $(aws sts assume-role-with-web-identity \
           --duration-seconds 3600 \
           --role-session-name "cicd" \
-          --role-arn arn:aws:iam::$NEW_AWS_ACCOUNT_ID:role/$AWS_ROLE \
+          --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/$AWS_ROLE \
           --web-identity-token "${CI_JOB_JWT_V2}" \
           --query "Credentials.[AccessKeyId,SecretAccessKey,SessionToken]" \
           --output text 
       )
     )
-  - echo "ECR_IMAGE_PATH=$NEW_AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/nextwork-repo" >> build.env
+  - echo "ECR_IMAGE_PATH=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/nextwork-repo" >> build.env
   - echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> build.env
   - echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> build.env
   - echo "AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN" >> build.env
   - export account_id="$(aws sts get-caller-identity --output text --query Account --region ${AWS_REGION})"
   - echo "AWS_ACCOUNT_ID=$account_id" >> build.env
 
-
 .TF_VAR_backendconf_script: &TF_VAR_backendconf_script |
-  export TF_VAR_PROJECT_NAME=$PROJECT_NAME && export TF_VAR_CI_PIPELINE_ID=$CI_PIPELINE_ID
-  export TF_VAR_app_name=$CI_PROJECT_NAME
-  export TF_VAR_aws_region=$AWS_REGION && export TF_VAR_workspace_key_prefix=$PROJECT_NAME
-  export TF_VAR_remote_state_bucket=$PROJECT_NAME-$account_id-tfstate && export TF_VAR_remote_state_core_path=core/$PROJECT_NAME-core.tfstate
-  export TF_VAR_remote_state_bucket_key=services/$CI_PROJECT_NAME-$PROJECT_NAME.tfstate
-  export TF_VAR_dynamodb_tf_statelock=se-dynamodb-tf-statelock
-  echo "using terraform backend from s3://$TF_VAR_remote_state_bucket/$TF_VAR_remote_state_bucket_key"
-  echo "bucket  = \"$TF_VAR_remote_state_bucket\""      >  s3_backend.config
-  echo "key     = \"$TF_VAR_remote_state_bucket_key\""  >> s3_backend.config
-  echo "workspace_key_prefix  = \"$TF_VAR_workspace_key_prefix\"" >> s3_backend.config
-  echo "region  = \"$TF_VAR_aws_region\""               >> s3_backend.config
-  echo "dynamodb_table  = \"$TF_VAR_dynamodb_tf_statelock\""   >> s3_backend.config
-  env | grep ^TF | sort || true
+    export TF_VAR_PROJECT_NAME=$PROJECT_NAME && export TF_VAR_CI_PIPELINE_ID=$CI_PIPELINE_ID
+    export TF_VAR_app_name=$CI_PROJECT_NAME
+    export TF_VAR_aws_region=$AWS_REGION && export TF_VAR_workspace_key_prefix=$PROJECT_NAME
+    export TF_VAR_remote_state_bucket=$PROJECT_NAME-$AWS_ACCOUNT_ID-tfstate && export TF_VAR_remote_state_core_path=core/$PROJECT_NAME-core.tfstate
+    export TF_VAR_remote_state_bucket_key=services/$CI_PROJECT_NAME-$PROJECT_NAME.tfstate
+    export TF_VAR_dynamodb_tf_statelock=se-dynamodb-tf-statelock
+    echo "using terraform backend from s3://$TF_VAR_remote_state_bucket/$TF_VAR_remote_state_bucket_key"
+    echo "bucket  = \"$TF_VAR_remote_state_bucket\""      >  s3_backend.config
+    echo "key     = \"$TF_VAR_remote_state_bucket_key\""  >> s3_backend.config
+    echo "workspace_key_prefix  = \"$TF_VAR_workspace_key_prefix\"" >> s3_backend.config
+    echo "region  = \"$TF_VAR_aws_region\""               >> s3_backend.config
+    echo "dynamodb_table  = \"$TF_VAR_dynamodb_tf_statelock\""   >> s3_backend.config
+    env | grep ^TF | sort || true
+    export TF_VAR_db_password=$DB_INSTANCE_PASSWORD
 
 Test and Lint:
-  image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-node-angular:16.10.0-14.2.10-alpine-openjdk11
+  before_script: [""]
   stage: Test and Lint
   script:
-    - export NODE_TLS_REJECT_UNAUTHORIZED=0
-    #  - npm i -D karma-chrome-launcher puppeteer sonar-scanner
-    - npm install
-    - ng test --configuration production --code-coverage=true
-    - npm run sonar -X
+    - echo "Test and Lint"
   rules:
-  - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(hmnextwork)$/ || $CI_COMMIT_BRANCH =~ /^(hmnextwork)$/'
-  #- if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(production)$/ || $CI_COMMIT_BRANCH =~ /^(production)$/' #when sonar needs to be skiped for master branch
-      #allow_failure: true
+    - if: "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(development|master|uat|eu-prod)$/ || $CI_COMMIT_BRANCH =~ /^(development|master|uat|eu-prod)$/"
 
 Validate Terraform:
   stage: Test and Lint
@@ -79,12 +80,28 @@ Validate Terraform:
     - terraform init -backend=false
     - terraform validate
     - terraform fmt -check
-    - echo "account_id=$account_id" >> ../build.env
   artifacts:
     reports:
       dotenv: build.env
   rules:
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(hmnextwork)$/ || $CI_COMMIT_BRANCH =~ /^(hmnextwork)$/'
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(development|master|staging)$/ || $CI_COMMIT_BRANCH =~ /^(development|master|staging)$/'
+      variables:                              
+        ENV: "STAGING"
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "uat" || $CI_COMMIT_BRANCH == "uat"'
+      variables:                              
+        ENV: "UAT"
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "eu-prod" || $CI_COMMIT_BRANCH == "eu-prod"'
+      variables:                              
+        ENV: "PROD"
+
+pre-build:
+  image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-maven-postgres:3.8.5-jdk-17-slim-pg-9.6
+  stage: pre-build
+  except:
+    - tags
+  script:
+    - rm -rf target
+    - rm -rf /root/.sonar/cache
 
 generate-cert:
   image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-maven-postgres:3.8.5-jdk-17-slim-pg-9.6
@@ -92,40 +109,69 @@ generate-cert:
   script:
     - echo "This job runs once every 365 days"
     - cd deploy/
-    - chmod +x openssl.sh
-    - source ./openssl.sh
-    - ls
+    - chmod +x keytool.sh
+    - source ./keytool.sh
   # only:
   #   variables:
   #     - $CI_PIPELINE_SOURCE == "schedule"
   artifacts:
     paths:
-      - deploy/*.pem
+      - deploy/springboot.jks
     expire_in: never
 
-Build:
-  image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-node-angular:16.10.0-14.2.10-alpine-openjdk11
-  stage: Build
-  before_script: [""]
+build:
+  image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-maven-postgres:3.8.5-jdk-17-slim-pg-9.6
+  stage: build
   script:
-    - npm ci --cache .npm --prefer-offline
-    - npm config set registry ${NPM_CONFIG_REGISTRY}
-    - ng build --configuration=hmnextwork
+    - mvn $MAVEN_OPTS clean install
   cache:
     paths:
-      - .npm/
+      - .m2/
+      - target/
   artifacts:
     paths:
-      - dist/
+      - target/
     expire_in: 1 hour
   rules:
-    - if: '$CI_COMMIT_BRANCH =~ /^(hmnextwork)$/'
+    - if: "$CI_COMMIT_BRANCH =~ /^(development|master|uat|eu-prod)$/"
 
-Docker Image Push hmnextwork:
-  stage: Docker Image Push
+publish-to-sonar:
+  image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-maven-postgres:3.8.5-jdk-17-slim-pg-9.6
+  stage: publish-to-sonar
+  script:
+    - pg_ctlcluster ${PG_VERSION} main restart
+    - service postgresql status
+    - mvn $MAVEN_OPTS clean org.jacoco:jacoco-maven-plugin:prepare-agent install org.jacoco:jacoco-maven-plugin:report
+    - mvn $MAVEN_OPTS sonar:sonar -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_PASSWORD
+  cache:
+    paths:
+      - .m2/
+      - target/
+  artifacts:
+    paths:
+      - target
+    expire_in: 1 hour
+  rules:
+    - if: "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(development|master|uat|eu-prod)$/"
+  #  - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(master|production)$/ || $CI_COMMIT_BRANCH =~ /^(master|production)$/'
+  # - if: '$CI_COMMIT_BRANCH =~ /^(production)$/'
+
+#publish-to-nexus:
+#  image: docker.siemens.com/blrise/platform/infrastructure/dockerhub/ise-maven-postgres:3.6.3-jdk-8-9.6
+#  stage: publish-to-nexus
+#  only:
+#    - master
+#  script:
+#    - mvn deploy
+#  cache:
+#    paths:
+#      - .m2/
+
+Docker Image Push Staging:
+  stage: Docker Image Push 
   variables:
-    IMAGE_PATH: 858728894252.dkr.ecr.$AWS_REGION.amazonaws.com/nextwork-repo
-    IMAGE_VERSION: ${CI_PROJECT_NAME}_${CI_PIPELINE_ID}_hmnextwork
+    ENV: STAGING
+    IMAGE_VERSION: ${CI_PROJECT_NAME}_${CI_PIPELINE_ID}_staging
   before_script: [""]
   image:
     name: gcr.io/kaniko-project/executor:debug
@@ -133,181 +179,202 @@ Docker Image Push hmnextwork:
   script:
     - echo "docker path = $ECR_IMAGE_PATH:$IMAGE_VERSION"
     - mkdir -p /root/.aws
-    - export PROFILE="hmnextwork"
     - echo $CREDENTIALS | base64 -d > /root/.aws/credentials
     - echo "{\"credHelpers\":{\"$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com\":\"ecr-login\"}}" > /kaniko/.docker/config.json
     - rm -rf target/*-sources.jar
-    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $ECR_IMAGE_PATH:$IMAGE_VERSION --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy --build-arg no_proxy=$no_proxy --build-arg APP_USER=$APP_USER --build-arg APP_DIR=$APP_DIR --build-arg PROFILE=$PROFILE
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile  --destination $ECR_IMAGE_PATH:$IMAGE_VERSION --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy --build-arg no_proxy=$no_proxy --build-arg APP_USER=$APP_USER --build-arg APP_DIR=$APP_DIR 
   rules:
-    - if: '$CI_COMMIT_BRANCH =~ /^(hmnextwork)$/'
+    - if: "$CI_COMMIT_BRANCH =~ /^(development|master|production)$/"
   dependencies:
     - Validate Terraform
+    - build
     - generate-cert
-    #- build
   allow_failure: true
   artifacts:
     reports:
       dotenv: build.env
 
+Docker Image Push UAT:
+  stage: Docker Image Push
+  variables:
+    ENV: UAT
+    IMAGE_VERSION: ${CI_PROJECT_NAME}_${CI_PIPELINE_ID}_uat
+  before_script: [""]
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - echo "docker path = $ECR_IMAGE_PATH:$IMAGE_VERSION"
+    - mkdir -p /root/.aws
+    - echo $CREDENTIALS | base64 -d > /root/.aws/credentials
+    - echo "{\"credHelpers\":{\"$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com\":\"ecr-login\"}}" > /kaniko/.docker/config.json
+    - rm -rf target/*-sources.jar
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $ECR_IMAGE_PATH:$IMAGE_VERSION --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy --build-arg no_proxy=$no_proxy --build-arg APP_USER=$APP_USER --build-arg APP_DIR=$APP_DIR
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "uat"'
+  dependencies:
+    - Validate Terraform
+    - build
+    - generate-cert
+  allow_failure: true
+  artifacts:
+    reports:
+      dotenv: build.env
 
-#Docker Image Push UAT: 
-#  stage: Docker Image Push
-#  variables:
-#    IMAGE_PATH: 858728894252.dkr.ecr.$AWS_REGION.amazonaws.com/nextwork-repo
-#    IMAGE_VERSION: ${CI_PROJECT_NAME}_${CI_PIPELINE_ID}_uat
-#  before_script: [""]
-#  image:
-#    name: gcr.io/kaniko-project/executor:debug
-#    entrypoint: [""]
-#  script:
-#    - echo "docker path = $ECR_IMAGE_PATH:$IMAGE_VERSION"
-#    - mkdir -p /root/.aws
-#    - export PROFILE="uat"
-#    - echo $CREDENTIALS | base64 -d > /root/.aws/credentials
-#    - echo "{\"credHelpers\":{\"$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com\":\"ecr-login\"}}" > /kaniko/.docker/config.json
-#    - rm -rf target/*-sources.jar
-#    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $ECR_IMAGE_PATH:$IMAGE_VERSION --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy --build-arg no_proxy=$no_proxy --build-arg APP_USER=$APP_USER --build-arg APP_DIR=$APP_DIR --build-arg PROFILE=$PROFILE
-#  rules:
-#    - if: '$CI_COMMIT_BRANCH == "uat"'
-#  dependencies:
-#    - Validate Terraform
-#    #- build
-#  allow_failure: true
-#  artifacts:
-#    reports:
-#      dotenv: build.env
-#
-#Docker Image Push Production: 
-#  stage: Docker Image Push
-#  variables:
-#    IMAGE_PATH: $account_id.dkr.ecr.$AWS_REGION.amazonaws.com/$PROJECT_NAME-repo
-#    IMAGE_VERSION: ${CI_PROJECT_NAME}_${CI_PIPELINE_ID}_production
-#    AWS_ACCESS_KEY_ID: $PROD_AWS_ACCESS_KEY_ID
-#    AWS_SECRET_ACCESS_KEY: $PROD_AWS_SECRET_ACCESS_KEY
-#    AWS_REGION: $PROD_AWS_REGION
-#  before_script: [""]
-#  image:
-#    name: gcr.io/kaniko-project/executor:debug
-#    entrypoint: [""]
-#  script:
-#    - mkdir -p /root/.aws
-#    - export PROFILE="production"
-#    - echo $CREDENTIALS | base64 -d > /root/.aws/credentials
-#    - echo "{\"credHelpers\":{\"$account_id.dkr.ecr.$AWS_REGION.amazonaws.com\":\"ecr-login\"}}" > /kaniko/.docker/config.json
-#    - echo "docker path = $IMAGE_PATH:$IMAGE_VERSION"
-#    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $IMAGE_PATH:$IMAGE_VERSION --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy --build-arg no_proxy=$no_proxy --build-arg PROFILE=$PROFILE
-#  rules:
-#    - if: '$CI_COMMIT_BRANCH == "production"'
+Docker Image Push Production:
+  stage: Docker Image Push
+  variables:
+    ENV: PROD
+    IMAGE_VERSION: ${CI_PROJECT_NAME}_${CI_PIPELINE_ID}_production
+  before_script: [""]
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - echo "docker path = $ECR_IMAGE_PATH:$IMAGE_VERSION"
+    - mkdir -p /root/.aws
+    - echo $CREDENTIALS | base64 -d > /root/.aws/credentials
+    - echo "{\"credHelpers\":{\"$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com\":\"ecr-login\"}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $ECR_IMAGE_PATH:$IMAGE_VERSION --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy --build-arg no_proxy=$no_proxy --build-arg APP_USER=$APP_USER --build-arg APP_DIR=$APP_DIR
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "eu-prod"'
+  dependencies:
+    - Validate Terraform
+    - build
+    - generate-cert
+  allow_failure: true
+  artifacts:
+    reports:
+      dotenv: build.env
 
-hmnextwork Plan:
-  stage: hmnextwork Plan
+Staging Plan:
+  variables:
+    ENV: STAGING  
+  stage: Staging Plan
   script:
     - *set_aws_account_cred_script
     - cd deploy/
     - *TF_VAR_backendconf_script
     - terraform init -upgrade -backend-config="s3_backend.config"
-    - terraform workspace select hmnextwork || terraform workspace new hmnextwork
-    - terraform plan -var-file=terraform_hmnextwork.tfvars
+    - terraform workspace select staging || terraform workspace new staging
+    - terraform plan -var-file=terraform_staging.tfvars
   rules:
-    - if: '$CI_COMMIT_BRANCH =~ /^(hmnextwork)$/'
+    - if: "$CI_COMMIT_BRANCH =~ /^(development|master|production)$/"
 
-hmnextwork Apply:
-  stage: hmnextwork Apply
+Staging Apply:
+  variables:
+    ENV: STAGING  
+  stage: Staging Apply
   script:
     - *set_aws_account_cred_script
     - cd deploy/
     - *TF_VAR_backendconf_script
     - terraform init -upgrade -backend-config="s3_backend.config"
-    - terraform workspace select hmnextwork
-    - terraform apply -auto-approve -var-file=terraform_hmnextwork.tfvars
+    - terraform workspace select staging
+    - terraform apply -auto-approve -var-file=terraform_staging.tfvars
   rules:
-    - if: '$CI_COMMIT_BRANCH =~ /^(hmnextwork)$/'
+    - if: "$CI_COMMIT_BRANCH =~ /^(development|master|production)$/"
 
-#UAT Plan:
-#  stage: UAT Plan
-#  script:
-#    - *set_aws_account_cred_script
-#    - cd deploy/
-#    - *TF_VAR_backendconf_script
-#    - terraform init -upgrade -backend-config="s3_backend.config"
-#    - terraform workspace select uat || terraform workspace new uat
-#    - terraform plan -var-file=terraform_uat.tfvars
-#  rules:
-#    - if: '$CI_COMMIT_BRANCH == "uat"'
-#
-#UAT Apply:
-#  stage: UAT Apply
-#  script:
-#    - *set_aws_account_cred_script
-#    - cd deploy/
-#    - *TF_VAR_backendconf_script
-#    - terraform init -upgrade -backend-config="s3_backend.config"
-#    - terraform workspace select uat
-#    - terraform apply -auto-approve -var-file=terraform_uat.tfvars
-#  rules:
-#    - if: '$CI_COMMIT_BRANCH == "uat"'
-#
-#Production Plan:
-#  stage: Production Plan
-#  script:
-#    - cd deploy/
-#    - *TF_VAR_backendconf_script
-#    - terraform init -upgrade -backend-config="s3_backend.config"
-#    - terraform workspace select production || terraform workspace new production
-#    - terraform plan -var-file=terraform_production.tfvars
-#  rules:
-#    - if: '$CI_COMMIT_BRANCH == "production"'
-#
-#Production Apply:
-#  stage: Production Apply
-#  script:
-#    - cd deploy/
-#    - *TF_VAR_backendconf_script
-#    - terraform init -upgrade -backend-config="s3_backend.config"
-#    - terraform workspace select production
-#    - terraform apply -auto-approve -var-file=terraform_production.tfvars
-#  rules:
-#    - if: '$CI_COMMIT_BRANCH == "production"'
-#
-hmnextwork Destroy:
+UAT Plan:
+  variables:
+    ENV: UAT
+  stage: UAT Plan
+  script:
+    - *set_aws_account_cred_script
+    - cd deploy
+    - *TF_VAR_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select uat || terraform workspace new uat
+    - terraform plan -var-file=terraform_uat.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "uat"'
+
+UAT Apply:
+  variables:
+    ENV: UAT
+  stage: UAT Apply
+  script:
+    - *set_aws_account_cred_script
+    - cd deploy/
+    - *TF_VAR_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select uat
+    - terraform apply -auto-approve -var-file=terraform_uat.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "uat"'
+
+Production Plan:
+  variables:
+    ENV: PROD
+  stage: Production Plan
+  script:
+    - *set_aws_account_cred_script
+    - cd deploy/
+    - *TF_VAR_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select production || terraform workspace new production
+    - terraform plan -var-file=terraform_production.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "eu-prod"'
+
+Production Apply:
+  variables:
+    ENV: PROD
+  stage: Production Apply
+  script:
+    - *set_aws_account_cred_script
+    - cd deploy/
+    - *TF_VAR_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select production
+    - terraform apply -auto-approve -var-file=terraform_production.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "eu-prod"'
+
+Staging Destroy:
+  variables:
+    ENV: STAGING  
   stage: Destroy
   script:
     - *set_aws_account_cred_script
     - cd deploy/
     - *TF_VAR_backendconf_script
     - terraform init -upgrade -backend-config="s3_backend.config"
-    - terraform workspace select hmnextwork
-    - terraform destroy -auto-approve -var-file=terraform_hmnextwork.tfvars
+    - terraform workspace select staging
+    - terraform destroy -auto-approve -var-file=terraform_staging.tfvars
   needs: []
   rules:
-    - if: '$CI_COMMIT_BRANCH =~ /^(hmnextwork)$/'
+    - if: "$CI_COMMIT_BRANCH =~ /^(development|master|production)$/"
       when: manual
 
-#UAT Destroy:
-#  stage: Destroy
-#  script:
-#    - *set_aws_account_cred_script
-#    - cd deploy/
-#    - *TF_VAR_backendconf_script
-#    - terraform init -upgrade -backend-config="s3_backend.config"
-#    - terraform workspace select uat
-#    - terraform destroy -auto-approve -var-file=terraform_uat.tfvars
-#  needs: []
-#  rules:
-#    - if: '$CI_COMMIT_BRANCH == "uat"'
-#      when: manual
-#
-#Production Destroy:
-#  stage: Destroy
-#  script:
-#    - cd deploy/
-#    - *TF_VAR_backendconf_script
-#    - terraform init -upgrade -backend-config="s3_backend.config"
-#    - terraform workspace select production
-#    - terraform destroy -auto-approve -var-file=terraform_production.tfvars
-#  needs: []
-#  rules:
-#    - if: '$CI_COMMIT_BRANCH == "production"'
-#      when: manual
-#
-###KTtest
+UAT Destroy:
+  variables:
+    ENV: UAT
+  stage: Destroy
+  script:
+    - *set_aws_account_cred_script
+    - cd deploy/
+    - *TF_VAR_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select uat
+    - terraform destroy -auto-approve -var-file=terraform_uat.tfvars
+  needs: []
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "uat"'
+      when: manual
+
+Production Destroy:
+  variables:
+    ENV: PROD
+  stage: Destroy
+  script:
+    - *set_aws_account_cred_script
+    - cd deploy/
+    - *TF_VAR_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select production
+    - terraform destroy -auto-approve -var-file=terraform_production.tfvars
+  needs: []
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "eu-prod"'
+      when: manual
