@@ -1,0 +1,247 @@
+default:
+  image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-terraform-awscli:1.5.0-v2-helm3
+  before_script:
+    - echo "Terraform $MODULE_PATH module deployment"
+  
+variables: 
+  http_proxy: "$CODE_PROXY"
+  https_proxy: "$CODE_PROXY"
+  no_proxy: "127.0.0.1,localhost,cr.siemens.com,code.siemens.com"
+  PROJECT_NAME: nextwork
+
+stages:
+  - Test and Lint
+  - Staging Plan
+  - Staging Apply
+  - UAT Plan
+  - UAT Apply
+  - Test and Lint prod
+  - Production Plan
+  - Production Apply
+  - Destroy
+  
+.set_aws_account_cred_script : &set_aws_account_cred_script |
+  export AWS_REGION=$(region_var_name=${ENV}_AWS_REGION ; echo ${!region_var_name:-$AWS_REGION})
+  export AWS_ACCOUNT_ID=$(account_var_name=${ENV}_AWS_ACCOUNT_ID; echo ${!account_var_name:-$AWS_ACCOUNT_ID})
+  export $(printf "AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s" \
+    $(aws sts assume-role-with-web-identity \
+      --duration-seconds 3600 \
+      --role-session-name "cicd" \
+      --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/$AWS_ROLE \
+      --web-identity-token "${CI_JOB_JWT_V2}" \
+      --query "Credentials.[AccessKeyId,SecretAccessKey,SessionToken]" \
+      --output text 
+    )
+    )
+  export account_id="$(aws sts get-caller-identity --output text --query Account --region ${AWS_REGION})"
+
+.set_aws_account_cred_r53_account_script : &set_aws_account_cred_r53_account_script |
+  export AWS_REGION=$(region_var_name=STAGING_AWS_REGION ; echo ${!region_var_name:-$AWS_REGION})
+  export AWS_ACCOUNT_ID=$(account_var_name=STAGING_AWS_ACCOUNT_ID; echo ${!account_var_name:-$AWS_ACCOUNT_ID})
+  export $(printf "STAGING_AWS_ACCESS_KEY_ID=%s STAGING_AWS_SECRET_ACCESS_KEY=%s STAGING_AWS_SESSION_TOKEN=%s" \
+    $(aws sts assume-role-with-web-identity \
+      --duration-seconds 3600 \
+      --role-session-name "cicd" \
+      --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/$AWS_ROLE \
+      --web-identity-token "${CI_JOB_JWT_V2}" \
+      --query "Credentials.[AccessKeyId,SecretAccessKey,SessionToken]" \
+      --output text 
+    ))
+  export TF_VAR_STAGING_AWS_ACCOUNT_ID=$STAGING_AWS_ACCESS_KEY_ID
+  export TF_VAR_STAGING_AWS_SECRET_ACCESS_KEY=$STAGING_AWS_SECRET_ACCESS_KEY
+  export TF_VAR_STAGING_AWS_SESSION_TOKEN=$STAGING_AWS_SESSION_TOKEN
+  export TF_VAR_AWS_REGION=$STAGING_AWS_REGION
+
+.bucket_dynomadb_backendconf_script : &bucket_dynomadb_backendconf_script 
+  - *set_aws_account_cred_script
+  - |
+    chmod +x create_bucket.sh && source ./create_bucket.sh
+    export TF_VAR_remote_state_bucket=$s3_tfstate && export TF_VAR_remote_state_bucket_key=core/$PROJECT_NAME-core.tfstate
+    export TF_VAR_aws_region=$AWS_REGION
+    export TF_VAR_project_name=$PROJECT_NAME && export TF_VAR_workspace_key_prefix=$PROJECT_NAME
+    echo "using terraform backend from s3://$TF_VAR_remote_state_bucket/$TF_VAR_remote_state_bucket_key"
+    echo "bucket  = \"$TF_VAR_remote_state_bucket\""      >  s3_backend.config
+    echo "key     = \"$TF_VAR_remote_state_bucket_key\""  >> s3_backend.config
+    echo "workspace_key_prefix = \"$TF_VAR_workspace_key_prefix\""  >> s3_backend.config
+    echo "region  = \"$TF_VAR_aws_region\""               >> s3_backend.config
+    echo "dynamodb_table  = \"$TF_VAR_dynamodb_tf_statelock\""   >> s3_backend.config
+    export TF_VAR_db_password=$DB_INSTANCE_PASSWORD && export TF_VAR_docdb_password=$DB_INSTANCE_PASSWORD
+
+# .set_eu_prod_aws_account_cred_script : &set_eu_prod_aws_account_cred_script |
+#   export AWS_REGION=$(region_var_name=ENV_AWS_REGION ; echo ${!region_var_name:-$AWS_REGION})
+#   export $(printf "AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s" \
+#     $(aws sts assume-role-with-web-identity \
+#       --duration-seconds 3600 \
+#       --role-session-name "cicd" \
+#       --role-arn $EU_PROD_ROLE_ARN \
+#       --web-identity-token "${CI_JOB_JWT_V2}" \
+#       --query "Credentials.[AccessKeyId,SecretAccessKey,SessionToken]" \
+#       --output text 
+#     )
+#     )
+#   export account_id="$(aws sts get-caller-identity --output text --query Account --region ${AWS_REGION})"
+
+
+# .bucket_eu_prod_dynomadb_backendconf_script : &bucket_eu_prod_dynomadb_backendconf_script |
+#   export NEW_AWS_ACCOUNT_ID=$EU_PROD_AWS_ACCOUNT_ID
+#   echo $NEW_AWS_ACCOUNT_ID
+#   chmod +x create_bucket.sh && source ./create_bucket.sh
+#   export TF_VAR_remote_state_bucket=$s3_tfstate && export TF_VAR_remote_state_bucket_key=core/$PROJECT_NAME-core.tfstate
+#   export TF_VAR_aws_region=$AWS_REGION
+#   export TF_VAR_project_name=$PROJECT_NAME && export TF_VAR_workspace_key_prefix=$PROJECT_NAME
+#   echo "using terraform backend from s3://$TF_VAR_remote_state_bucket/$TF_VAR_remote_state_bucket_key"
+#   echo "bucket  = \"$TF_VAR_remote_state_bucket\""      >  s3_backend.config
+#   echo "key     = \"$TF_VAR_remote_state_bucket_key\""  >> s3_backend.config
+#   echo "workspace_key_prefix = \"$TF_VAR_workspace_key_prefix\""  >> s3_backend.config
+#   echo "region  = \"$TF_VAR_aws_region\""               >> s3_backend.config
+#   echo "dynamodb_table  = \"$TF_VAR_dynamodb_tf_statelock\""   >> s3_backend.config
+#   export TF_VAR_db_password=$EU_DB_INSTANCE_PASSWORD && export TF_VAR_docdb_password=$EU_DB_INSTANCE_PASSWORD
+
+Validate Terraform:
+  stage: Test and Lint
+  script:
+    - *set_aws_account_cred_script
+    - cd deploy/
+    - terraform init -backend=false
+    - terraform validate
+    - terraform fmt -check
+  rules:
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(master|uat|eu-prod|staging-local)$/ || $CI_COMMIT_BRANCH =~ /^(master|uat|eu-prod|staging-local)$/'
+
+
+Staging Plan:
+  variables: 
+    ENV: STAGING
+  stage: Staging Plan
+  script:
+    - cd deploy/
+    - *bucket_dynomadb_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select staging || terraform workspace new staging
+    - terraform plan -var-file=terraform_staging.tfvars
+    #- terraform plan -target=aws_security_group.ecs_service -var-file=terraform_staging.tfvars 
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(master|staging-local)$/'
+
+Staging Apply:
+  variables: 
+    ENV: STAGING
+  stage: Staging Apply
+  script:
+    - cd deploy/
+    - *bucket_dynomadb_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select staging
+    - terraform apply -auto-approve -var-file=terraform_staging.tfvars
+    #- terraform apply -auto-approve -target=aws_security_group.ecs_service -var-file=terraform_staging.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(master|staging-local)$/'
+      when: manual
+      
+UAT Plan:
+  variables: 
+    ENV: UAT
+  stage: UAT Plan
+  script:
+    - cd deploy/
+    - *bucket_dynomadb_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select uat || terraform workspace new uat
+    - terraform plan -var-file=terraform_uat.tfvars
+    #- terraform plan -target=aws_security_group.bastion -var-file=terraform_uat.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "uat"'
+
+UAT Apply:
+  variables: 
+    ENV: UAT
+  stage: UAT Apply
+  script:
+    - cd deploy/
+    - *bucket_dynomadb_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select uat
+    - terraform apply -auto-approve -var-file=terraform_uat.tfvars
+    #- terraform apply -auto-approve -target=aws_security_group.bastion -var-file=terraform_uat.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "uat"'
+      when: manual
+
+Production Plan:
+  variables: 
+    ENV: PROD
+  stage: Production Plan
+  script:
+    - cd deploy/
+    - *bucket_dynomadb_backendconf_script
+    - *set_aws_account_cred_r53_account_script
+    - echo $STAGING_AWS_ACCESS_KEY_ID
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select production || terraform workspace new production
+    - terraform plan -var-file=terraform_production.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "eu-prod"'
+
+Production Apply:
+  variables: 
+    ENV: PROD
+  stage: Production Apply
+  script:
+    - cd deploy/
+    - *bucket_dynomadb_backendconf_script
+    - *set_aws_account_cred_r53_account_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select production
+    - terraform apply -auto-approve -var-file=terraform_production.tfvars
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "eu-prod"'
+      when: manual
+
+Staging Destroy:
+  variables: 
+    ENV: STAGING
+  stage: Destroy
+  script:
+    - *set_aws_account_cred_script
+    - cd deploy/
+    - *bucket_dynomadb_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select staging
+    - terraform destroy -auto-approve -var-file=terraform_staging.tfvars
+  needs: []
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(master|production|staging-local)$/'
+      when: manual
+
+UAT Destroy:
+  variables: 
+    ENV: UAT
+  stage: Destroy
+  script:
+    - *set_aws_account_cred_script
+    - cd deploy/
+    - *bucket_dynomadb_backendconf_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select uat
+    - terraform destroy -auto-approve -var-file=terraform_uat.tfvars
+  needs: []
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "uat"'
+      when: manual
+
+Production Destroy:
+  variables: 
+    ENV: PROD
+  stage: Destroy
+  script:
+    - cd deploy/
+    - *bucket_dynomadb_backendconf_script
+    - *set_aws_account_cred_r53_account_script
+    - terraform init -upgrade -backend-config="s3_backend.config"
+    - terraform workspace select production
+    - terraform destroy -auto-approve -var-file=terraform_production.tfvars
+  needs: []
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "eu-prod"'
+      when: manual
+

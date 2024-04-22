@@ -1,0 +1,83 @@
+#Prerequisites to run an Docker application in local
+  #Docker Desktop for Windows: Installation manual- https://docs.docker.com/docker-for-windows/install/
+  #Docker-compose(comes along with Docker Desktop for Windows)
+  #aws cli: installation Guide- https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html
+  #Docker(only required for linux)
+
+########### sample configuration for docker image build or pull ###########
+  #build: # Pass on the weather ui project path 
+      #context: ../../weather/ #eg: ../weather
+      #dockerfile: Dockerfile_local
+  #image: Use pushed standard image from ecr eg: 588243961618.dkr.ecr.eu-central-1.amazonaws.com/weatherapp-repo:data-storage-service_9349473
+
+###IMPORTANT: If ECR images are used to run app, please login to ECR first before running compose
+  #Command to login to nextwork ecr: docker login cmd: aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 588243961618.dkr.ecr.eu-central-1.amazonaws.com
+
+version: "3.8"
+
+services:
+  db-service:
+    image: postgres    #DockerHub 
+    ports:
+        - "5432:5432"
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - psql:/var/lib/postgresql/data
+  nextworkui:
+    build: 
+      context: ../../nextworkui/ 
+      dockerfile: Dockerfile_local
+    ports:
+      - "81:80"
+  nextwork-project-service:
+    #image: 588243961618.dkr.ecr.eu-central-1.amazonaws.com/nextwork-repo:nextwork-project-service_10179346
+    build: 
+      args:
+        - APP_USER=user
+        - APP_DIR=/app
+      context: ../../nextwork-project-service/ 
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8080"
+    environment:
+      - SERVER_PORT=8080
+      - SERVER_SERVLET_CONTEXT_PATH=/project-service
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-service:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - db-service
+  nextwork-skill-service:
+    image: 588243961618.dkr.ecr.eu-central-1.amazonaws.com/nextwork-repo:nextwork-skill-service_10416116
+    ports:
+      - "8082:8080"
+    environment:
+      - SERVER_PORT=8080
+      - SERVER_SERVLET_CONTEXT_PATH=/skill-service
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-service:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - REMOTE_SERVICE_BASE_URL=http://nextwork-project-service:8080/project-service
+    depends_on:
+      - db-service
+      - nextwork-project-service
+
+volumes:
+  psql:
+
+
+
+
+#Userful  Docker/Docker-compose commands 
+# Stop the container(s) using the following command:
+# docker-compose down
+# Delete all containers using the following command:
+# docker rm -f $(docker ps -a -q)
+# Delete all volumes using the following command:
+# docker volume rm $(docker volume ls -q)
+# Restart the containers using the following command:
+# docker-compose up -d

@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  terraform:
+    image: hashicorp/terraform:1.5.2
+    volumes:
+      - .:/infra
+    working_dir: /infra
+    environment:
+      - AWS_ACCESS_KEY_ID=${NEW_AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${NEW_AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${NEW_AWS_SESSION_TOKEN}
+
+
+#docker-compose -f docker-compose.yml run --rm terraform fmt
