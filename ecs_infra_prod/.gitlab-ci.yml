@@ -2,7 +2,9 @@ default:
   image: cr.siemens.com/blrise/platform/infrastructure/dockerhub/ise-terraform-awscli:1.5.0-v2-helm3
   before_script:
     - echo "Terraform $MODULE_PATH module deployment"
-  
+  id_tokens:
+    GITLAB_OIDC_TOKEN:
+      aud: https://code.siemens.com  
 variables: 
   http_proxy: "$CODE_PROXY"
   https_proxy: "$CODE_PROXY"
@@ -28,7 +30,7 @@ stages:
       --duration-seconds 3600 \
       --role-session-name "cicd" \
       --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/$AWS_ROLE \
-      --web-identity-token "${CI_JOB_JWT_V2}" \
+      --web-identity-token "${GITLAB_OIDC_TOKEN}" \
       --query "Credentials.[AccessKeyId,SecretAccessKey,SessionToken]" \
       --output text 
     )
@@ -43,7 +45,7 @@ stages:
       --duration-seconds 3600 \
       --role-session-name "cicd" \
       --role-arn arn:aws:iam::$AWS_ACCOUNT_ID:role/$AWS_ROLE \
-      --web-identity-token "${CI_JOB_JWT_V2}" \
+      --web-identity-token "${GITLAB_OIDC_TOKEN}" \
       --query "Credentials.[AccessKeyId,SecretAccessKey,SessionToken]" \
       --output text 
     ))
